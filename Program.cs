@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using FluentValidation;
 using MiAp.Data;
 using MiAp.Endpoints;
 using MiAp.Middleware;
@@ -27,6 +28,9 @@ builder.Services.AddCors(options =>
 // Configure Global Exception Handling
 builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 builder.Services.AddProblemDetails();
+
+// Register FluentValidation Validators
+builder.Services.AddValidatorsFromAssemblyContaining<Program>();
 
 var app = builder.Build();
 
